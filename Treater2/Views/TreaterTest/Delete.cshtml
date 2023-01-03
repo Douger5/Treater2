@@ -1,0 +1,306 @@
+﻿@model Treater2.Models.TreaterTest
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>TreaterTest</h4>
+    <hr />
+    @Html.HiddenFor(model => model.TreatingLine.TreatingLineID, new { @id = "CurrentTreaterID" })
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AshPartID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AshPartID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TreatingLine.TreaterName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TreatingLine.TreaterName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TreatmentDateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TreatmentDateTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OperatorA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OperatorA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OperatorB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OperatorB)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RollSkidNum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RollSkidNum)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.JobNum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.JobNum)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Qty)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Qty)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UOM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UOM)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DryRollNum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DryRollNum)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TestNum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TestNum)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Zone1Temp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Zone1Temp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Zone2Temp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Zone2Temp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Zone3Temp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Zone3Temp)
+        </dd>
+
+        <dt class="ResinSolids">
+            @Html.DisplayNameFor(model => model.ResinSolids)
+        </dt>
+
+        <dd class="ResinSolids">
+            @Html.DisplayFor(model => model.ResinSolids)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Speed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Speed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PanConfig)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PanConfig)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PanLevel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PanLevel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BarConfigID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BarConfigID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BarAngle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BarAngle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ResinTemp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ResinTemp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RawPaperWeight)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RawPaperWeight)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DryPaperWeight)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DryPaperWeight)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TreatedPaperWeight)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TreatedPaperWeight)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VolatilesTreatedWeight)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VolatilesTreatedWeight)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VolatilesOvenDryWeight)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VolatilesOvenDryWeight)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TreatedPressedWeight)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TreatedPressedWeight)
+        </dd>
+        <dt class="Flow">
+            @Html.DisplayNameFor(model => model.Flow)
+        </dt>
+
+        <dd class="Flow">
+            @Html.DisplayFor(model => model.Flow)
+        </dd>
+
+        <dt class="ResinContentFiberesin">
+            @Html.DisplayNameFor(model => model.ResinContentFiberesin)
+        </dt>
+
+        <dd class="ResinContentFiberesin">
+            @Html.DisplayFor(model => model.ResinContentFiberesin)
+        </dd>
+
+        <dt class="NetRC">
+            @Html.DisplayNameFor(model => model.NetRC)
+        </dt>
+
+        <dd class="NetRC">
+            @Html.DisplayFor(model => model.NetRC)
+        </dd>
+
+        <dt class="GurleyPorosity">
+            @Html.DisplayNameFor(model => model.GurleyPorosity)
+        </dt>
+
+        <dd class="GurleyPorosity">
+            @Html.DisplayFor(model => model.GurleyPorosity)
+        </dd>
+
+        <dt class="WetOut">
+            @Html.DisplayNameFor(model => model.WetOut)
+        </dt>
+
+        <dd class="WetOut">
+            @Html.DisplayFor(model => model.WetOut)
+        </dd>
+        <dt class="Caliper">
+            @Html.DisplayNameFor(model => model.Caliper)
+        </dt>
+
+        <dd class="Caliper">
+            @Html.DisplayFor(model => model.Caliper)
+        </dd>
+        <dt class="BasisWeight">
+            @Html.DisplayNameFor(model => model.BasisWeight)
+        </dt>
+
+        <dd class="BasisWeight">
+            @Html.DisplayFor(model => model.BasisWeight)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Notes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Notes)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+    <div class="form-actions no-color">
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        @Html.ActionLink("Back to List", "Index", new { ctid = ViewBag.CurrentTreaterID, page = ViewBag.Page, searchstr = ViewBag.SearchStr, daterange = ViewBag.DateRange, labelid = 0 })
+    </div>
+    }
+</div>
+@section Scripts {
+    <script src="@Url.Content("~/Scripts/TreatingLineShowHide.js")"></script>
+}

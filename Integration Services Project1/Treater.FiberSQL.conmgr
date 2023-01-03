@@ -1,0 +1,14 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="Treater.FiberSQL"
+  DTS:DTSID="{FDF15918-D59A-492D-B4D6-66290E134231}"
+  DTS:CreationName="ODBC">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="uid=FiberSQL;Dsn=Treater;">
+      <DTS:Password
+        DTS:Name="pwd"
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAMw1N3cIq3Eavit2MoLgvbQAAAAACAAAAAAAQZgAAAAEAACAAAADdKs0swiA/LrpRGkar+scXVbJRXqbhr5aDrvFbz0jacgAAAAAOgAAAAAIAACAAAADYjBylRSxAgRIeiHU9NkDfZ4q7ofu3KuMXxLeB9uAJQYAAAAB1PTHSice0mmhyImZ4epV3lT0fEbAGVV1yZOcN0928Hi9HohULGmXQfamqhooJt/af+3I+JelcAVRZlVZghhYTHr2Jb7v0TqBvys9yZBsWjIGUhrLVGdAdK1WFcEtAX4kPIJTFeia+cUN03pq5gyZGwIW9qgRr240uQR0JWiLtfEAAAAB/5SEM+PvJAa9lrj4SNhffXJIEytB5s+B0nW5zZP0eeH/zHu4fcNlHdCTJOrvmMKY9ITqgJjBhIOoNLiZ05wcp</DTS:Password>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

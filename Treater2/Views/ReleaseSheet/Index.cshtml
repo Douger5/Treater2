@@ -1,0 +1,110 @@
+﻿@model IEnumerable<Treater2.Models.ReleaseSheet>
+
+@{
+    ViewBag.Title = "Index";
+}
+<img src="/Content/Images/FRLogo.jpg" />
+
+<h2>Release Sheet Log</h2>
+<script>
+    var labelurl = "@Url.Action("Label", "ReleaseSheet")";
+    var sheetid = "@ViewBag.OpenLabel";
+    var url = labelurl + '?id=' + sheetid;
+</script>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Item.ItemID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Item.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReleaseDateTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Job)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Board)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Width)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Length)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Lbs)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sheets)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Roll)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rejected)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Notes)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Item.ItemID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReleaseDateTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Job)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Board)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Width)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Length)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lbs)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sheets)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Roll)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rejected)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Notes)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID }) |
+                @Html.ActionLink("Label", "Label", new { id = item.ID }, new { target = "_blank" })
+            </td>
+        </tr>
+    }
+
+</table>
+@section Scripts
+{
+    <script src="@Url.Content("~/Scripts/SaveAndLabel.js")"></script>
+}

@@ -1,0 +1,183 @@
+﻿@model IEnumerable<Treater2.Models.TreatingSpec>
+
+@{
+    ViewBag.Title = "Index";
+}
+<img src="/Content/Images/FRLogo.jpg" />
+<h2>Treating Specs</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TreatingSpecID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FlowTarget)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FlowMax)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FlowMin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RCTarget)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RCMax)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RCMin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VolTarget)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VolMax)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VolMin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NetRCTarget)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NetRCMin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NetRCMax)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GurleyPorosityTarget)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GurleyPorosityMin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GurleyPorosityMax)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WetOutTarget)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WetOutMin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WetOutMax)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CaliperTarget)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CaliperMin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CaliperMax)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BasisWeightTarget)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BasisWeightMin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BasisWeightMax)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Comment)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TreatingSpecID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FlowTarget)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FlowMax)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FlowMin)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RCTarget)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RCMax)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RCMin)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VolTarget)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VolMax)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VolMin)
+        </td>
+        <th>
+            @Html.DisplayFor(modelItem => item.NetRCTarget)
+        </th>
+        <th>
+            @Html.DisplayFor(modelItem => item.NetRCMin)
+        </th>
+        <th>
+            @Html.DisplayFor(modelItem => item.NetRCMax)
+        </th>
+        <th>
+            @Html.DisplayFor(modelItem => item.GurleyPorosityTarget)
+        </th>
+        <th>
+            @Html.DisplayFor(modelItem => item.GurleyPorosityMin)
+        </th>
+        <th>
+            @Html.DisplayFor(modelItem => item.GurleyPorosityMax)
+        </th>
+        <th>
+            @Html.DisplayFor(modelItem => item.WetOutTarget)
+        </th>
+        <th>
+            @Html.DisplayFor(modelItem => item.WetOutMin)
+        </th>
+        <th>
+            @Html.DisplayFor(modelItem => item.WetOutMax)
+        </th>
+        <th>
+            @Html.DisplayFor(modelItem => item.CaliperTarget)
+        </th>
+        <th>
+            @Html.DisplayFor(modelItem => item.CaliperMin)
+        </th>
+        <th>
+            @Html.DisplayFor(modelItem => item.CaliperMax)
+        </th>
+        <th>
+            @Html.DisplayFor(modelItem => item.BasisWeightTarget)
+        </th>
+        <th>
+            @Html.DisplayFor(modelItem => item.BasisWeightMin)
+        </th>
+        <th>
+            @Html.DisplayFor(modelItem => item.BasisWeightMax)
+        </th>
+        <td>
+            @Html.DisplayFor(modelItem => item.Comment)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.TreatingSpecID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.TreatingSpecID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.TreatingSpecID })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,216 @@
+﻿@model Treater2.ViewModels.LabelData
+@{
+    Layout = "~/Views/Shared/_LabelLayout.cshtml";
+}
+@{
+    ViewBag.Title = "CreatePDF";
+}
+<title>@ViewBag.Title - Treater Log</title>
+@Styles.Render("~/Content/css")
+<div class="container-fluid body-content">
+    <h2>Fiberesin Industries, Inc.</h2>
+    @Html.HiddenFor(model => model.SelectedTest.TreatingLineID, new { @id = "CurrentTreaterID" })
+    <table class="table-bordered">
+        <tr>
+            <td colspan="2" class="special-td">@Html.DisplayFor(model => model.SelectedTest.AshPart.AshPartID)</td>
+            <td rowspan="4" colspan="2">
+                <img src='@string.Format("https://qrcode.tec-it.com/API/QRCode?data={0},{1},{2},{3}&backcolor=%23ffffff&size=Small",
+        @Html.DisplayFor(model => model.SelectedTest.AshPart.AshPartID),
+        @Html.DisplayFor(model => model.SelectedTest.RollSkidNum),
+        @Html.DisplayFor(model => model.labelParameters.Quantity),
+        @Html.DisplayFor(model => model.SelectedTest.JobNum))' />
+                @*<img src='@string.Format("https://api.qrserver.com/v1/create-qr-code/?data={0},{1},{2},{3}",
+        @Html.DisplayFor(model => model.SelectedTest.AshPart.AshPartID),
+        @Html.DisplayFor(model => model.SelectedTest.RollSkidNum),
+        @Html.DisplayFor(model => model.labelParameters.Quantity),
+        @Html.DisplayFor(model => model.SelectedTest.JobNum))' />*@
+                @*<img src='@string.Format("https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl={0},{1},{2},{3}",
+        @Html.DisplayFor(model => model.SelectedTest.AshPart.AshPartID),
+        @Html.DisplayFor(model => model.SelectedTest.RollSkidNum),
+        @Html.DisplayFor(model => model.labelParameters.Quantity),
+        @Html.DisplayFor(model => model.SelectedTest.JobNum))' />*@
+            </td>
+            <td rowspan="4" colspan="5">
+                @{ if (Model.NonConforming > 0)
+                    {
+                        <img src="~/Content/Images/NonConform.png" />
+                    }
+                 }
+            </td>
+
+        </tr>
+        <tr><th>@Html.DisplayNameFor(model => model.SelectedTest.RollSkidNum) </th><td>@Html.DisplayFor(model => model.SelectedTest.RollSkidNum) </ td ></tr>
+        <tr><th>@Html.DisplayNameFor(model => model.labelParameters.Quantity) </th><td>@Html.DisplayFor(model => model.labelParameters.Quantity) @Html.DisplayFor(model => model.labelParameters.UOM) </td></tr>
+        <tr><th>@Html.DisplayNameFor(model => model.SelectedTest.TreatingLine.TreaterName) </th><td>@Html.DisplayFor(model => model.SelectedTest.TreatingLine.TreaterName) </td></tr>
+        <tr class="label-test-rows">
+            <th>
+                Test Date
+            </th>
+            <th>
+                Job Number
+            </th>
+            <th>
+                Test
+            </th>
+            <th>
+                Paper
+            </th>
+            <th>
+                Resin Mix
+            </th>
+            <th>
+                Treating Spec
+            </th>
+            <th width="50px" class="ResinContentFiberesin">
+                RCF
+            </th>
+            <th width="50px" class="NetRC">
+                NRC
+            </th>
+            <th width="50px">
+                Vol
+            </th>
+            <th width="50px" class="Flow">
+                Flow
+            </th>
+            <th class="GurleyPorosity">
+                Gurley
+            </th>
+            <th class="WetOut">
+                Wet Out
+            </th>
+            <th class="Caliper">
+                Caliper
+            </th>
+            <th class="BasisWeight">
+                Basis Weight
+            </th>
+            @{
+                var colorbar = "#fff";
+                switch (Model.SelectedTest.AshPart.ResinMix)
+                {
+                    case "M05":
+                        colorbar = "magenta";
+                        break;
+                    case "M03":
+                        colorbar = "green";
+                        break;
+                    case "M18":
+                        colorbar = "blue";
+                        break;
+                    case "M11":
+                        colorbar = "yellow";
+                        break;
+                }
+            }
+            <td rowspan="8" width="40px" bgcolor=@colorbar></td>
+        </tr>
+
+        @foreach (var item in Model.TreaterTests)
+        {
+            <tr class="label-test-rows">
+                <td>
+                    @Html.DisplayFor(modelItem => item.TreatmentDateTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.JobNum)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TestNum)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AshPart.Paper)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AshPart.ResinMix)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AshPart.TreatingSpecID)
+                </td>
+                <td class="ResinContentFiberesin">
+                    @Html.DisplayFor(modelItem => item.ResinContentFiberesin)
+                </td>
+                <td class="NetRC">
+                    @Html.DisplayFor(modelItem => item.NetRC)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Vol)
+                </td>
+                <td class="Flow">
+                    @Html.DisplayFor(modelItem => item.Flow)
+                </td>
+                <td class="GurleyPorosity">
+                    @Html.DisplayFor(modelItem => item.GurleyPorosity)
+                </td>
+                <td class="WetOut">
+                    @Html.DisplayFor(modelItem => item.WetOut)
+                </td>
+
+                <td class="Caliper">
+                    @Html.DisplayFor(modelItem => item.Caliper)
+                </td>
+                <td class="BasisWeight">
+                    @Html.DisplayFor(modelItem => item.BasisWeight)
+                </td>
+            </tr>
+        }
+        <tr> </tr>
+        <tr>
+            <th>
+                Roll/Skid Average Values
+            </th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="ResinContentFiberesin">
+                @Html.DisplayFor(m => Model.AvgRCF)
+            </td>
+            <td class="NetRC">
+                @Html.DisplayFor(m => Model.AvgNRC)
+            </td>
+            <td>
+                @Html.DisplayFor(m => Model.AvgVol)
+            </td>
+            <td class="Flow">
+                @Html.DisplayFor(m => Model.AvgFlow)
+            </td>
+            <td class="GurleyPorosity">
+                @Html.DisplayFor(m => Model.AvgGurley)
+            </td>
+            <td class="WetOut">
+                @Html.DisplayFor(m => Model.AvgWetOut)
+            </td>
+            <td class="Caliper">
+                @Html.DisplayFor(m => Model.AvgCaliper)
+            </td>
+            <td class="BasisWeight">
+                @Html.DisplayFor(m => Model.AvgBW)
+            </td>
+        </tr>
+        <tr><th colspan="9">Notes</th></tr>
+        <tr><td colspan="9">@Html.DisplayFor(model => model.labelParameters.Notes)</td></tr>
+        <tr>
+            <td colspan="9" id="msds">
+                <div style="@(Model.SelectedTest.TreatingLine.TreatingLineID==3 || Model.SelectedTest.TreatingLine.TreatingLineID==4 ? "display:block" : "display:none")">
+                    Product: PAPER/PHENOL RESIN IMPREGNATED
+                    Manufacturer: Fiberesin Industries, Inc., Box 88, Oconomowoc, WI  53066  (262)567-4427
+                    This product contains: Phenol-Formaldehyde Resin, Phenol (2.0% or less), Formaldehyde (0.6% or less)
+                    Phenol may cause kidney, liver or heart damage.
+                    Formaldehyde is an irritant to eyes, lungs and skin.  It
+                    has been shown to cause cancer in laboratory animals.
+                    National Cancer Institute study found little evidence to
+                    connect formaldehyde exposure with cancer in humans.
+                    For skin contamination, wash with soap and water.
+                    For eye contact, flush with water for 15 minutes.
+                    For further information, refer to Material Safety Data Sheet.
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
+@section Scripts {
+    @*<script src="@Url.Content("~/Scripts/TreaterTestCreateEdit.js")"></script>*@
+    <script src="@Url.Content("~/Scripts/TreatingLineShowHide.js")"></script>
+    }

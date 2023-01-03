@@ -1,0 +1,61 @@
+﻿@model Treater2.Models.ReleaseSheet
+@{
+    Layout = null;
+}
+@{
+    ViewBag.Title = "CreateRSPDF";
+}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>@ViewBag.Title - Treater Log</title>
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+        @Scripts.Render("~/bundles/moment")
+    </head>
+    <body>
+        <div id="indexurl" indexurl="@Url.Action("Index","ReleaseSheet")"></div>
+        <div class="container-fluid body-content">
+            <h2>Fiberesin Industries, Inc.</h2>
+
+            <table class="table-bordered">
+                <tr>
+                    <td colspan="2" width="500px" class="special-td">@Html.DisplayFor(model => model.Item.ItemID)</td>
+                    <td rowspan="4" colspan="2">
+                        <img src='@string.Format("https://qrcode.tec-it.com/API/QRCode?data={0},{1},{2},{3}&backcolor=%23ffffff&size=Small",
+                             @Html.DisplayFor(model => model.Item.ItemID),
+                     @Html.DisplayFor(model => model.Roll),
+                     @Html.DisplayFor(model => model.Sheets),
+                     @Html.DisplayFor(model => model.Job))' />
+
+                        @*<img src='@string.Format("https://api.qrserver.com/v1/create-qr-code/?data={0},{1},{2},{3}",
+                     @Html.DisplayFor(model => model.Item.ItemID),
+                     @Html.DisplayFor(model => model.Roll),
+                     @Html.DisplayFor(model => model.Sheets),
+                     @Html.DisplayFor(model => model.Job))' />*@
+                        @*<img src='@string.Format("https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl={0},{1},{2},{3}",
+        @Html.DisplayFor(model => model.Item.ItemID),
+        @Html.DisplayFor(model => model.Roll),
+        @Html.DisplayFor(model => model.Sheets),
+        @Html.DisplayFor(model => model.Job))' />*@
+                    </td>
+                </tr>
+                <tr><th>@Html.DisplayNameFor(model => model.Item.Description) </th><td>@Html.DisplayFor(model => model.Item.Description)</td></tr>
+                <tr><th>@Html.DisplayNameFor(model => model.Board) </th><td>@Html.DisplayFor(model => model.Board) </td></tr>
+                <tr><th>@Html.DisplayNameFor(model => model.Job) </th><td>@Html.DisplayFor(model => model.Job)</td></tr>
+                <tr><th>@Html.DisplayNameFor(model => model.Length) </th><td>@Html.DisplayFor(model => model.Length) </td></tr>
+                <tr><th>@Html.DisplayNameFor(model => model.Width) </th><td>@Html.DisplayFor(model => model.Width) </td></tr>
+                <tr><th>@Html.DisplayNameFor(model => model.Lbs) </th><td>@Html.DisplayFor(model => model.Lbs) </td></tr>
+                <tr><th>@Html.DisplayNameFor(model => model.Sheets) </th><td>@Html.DisplayFor(model => model.Sheets) </td></tr>
+                <tr><th>@Html.DisplayNameFor(model => model.Roll) </th><td>@Html.DisplayFor(model => model.Roll) </td></tr>
+                <tr><th>@Html.DisplayNameFor(model => model.Rejected) </th><td>@Html.DisplayFor(model => model.Rejected) </td></tr>
+                <tr> </tr>
+                <tr><th colspan="2">Notes</th></tr>
+                <tr><td colspan="3">@Html.DisplayFor(model => model.Notes)</td></tr>
+            </table>
+        </div>
+    </body>
+</html>

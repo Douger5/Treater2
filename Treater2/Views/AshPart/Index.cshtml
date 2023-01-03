@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Treater2.Models.AshPart>
+
+@{
+    ViewBag.Title = "Index";
+}
+<img src="/Content/Images/FRLogo.jpg" />
+<h2>Ash Recipes</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Ash Part
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ResinMix)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TreatingSpec.TreatingSpecID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Paper)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Size)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AshPartID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ResinMix)
+        </td>
+        <td>
+            @Html.ActionLink(item.TreatingSpec.TreatingSpecID,"Details", "TreatingSpec", new { id = item.TreatingSpec.TreatingSpecID }, null)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Paper)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Size)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.AshPartID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.AshPartID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.AshPartID })
+        </td>
+    </tr>
+}
+
+</table>

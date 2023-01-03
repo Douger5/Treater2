@@ -1,0 +1,50 @@
+﻿@model Treater2.Models.AshPart
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Ashpart - @Html.DisplayFor(model => model.AshPartID)</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ResinMix)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ResinMix)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TreatingSpecID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TreatingSpecID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Paper)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Paper)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Size)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Size)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.AshPartID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,187 @@
+﻿@model Treater2.Models.TreatingSpec
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TreatingSpec - @Html.DisplayFor(model => model.TreatingSpecID)</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FlowTarget)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FlowTarget)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FlowMax)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FlowMax)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FlowMin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FlowMin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RCTarget)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RCTarget)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RCMax)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RCMax)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RCMin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RCMin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VolTarget)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VolTarget)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VolMax)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VolMax)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VolMin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VolMin)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NetRCTarget)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NetRCTarget)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NetRCMax)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NetRCMax)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NetRCMin)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NetRCMin)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.GurleyPorosityTarget)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.GurleyPorosityTarget)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.GurleyPorosityMax)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.GurleyPorosityMax)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.GurleyPorosityMin)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.GurleyPorosityMin)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.WetOutTarget)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.WetOutTarget)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.WetOutMax)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.WetOutMax)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.WetOutMin)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.WetOutMin)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CaliperTarget)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CaliperTarget)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CaliperMax)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CaliperMax)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CaliperMin)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CaliperMin)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.BasisWeightTarget)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.BasisWeightTarget)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.BasisWeightMax)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.BasisWeightMax)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.BasisWeightMin)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.BasisWeightMin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comment)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Comment)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.TreatingSpecID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,146 @@
+﻿@model IEnumerable<Treater2.Models.TreatingSpec>
+
+@{
+    ViewBag.Title = "Index";
+}
+<img src="/Content/Images/FRLogo.jpg" />
+<h2>Treating Specs</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TreatingSpecID)
+        </th>
+        <th></th>
+        <th>
+            Flow
+        </th>
+        <th>
+            RC
+        </th>
+        <th>
+            Vol
+        </th>
+        <th>
+            NetRC
+        </th>
+        <th>
+            Gurley Porosity
+        </th>
+        <th>
+            Wet Out
+        </th>
+        <th>
+            Caliper
+        </th>
+        <th>
+            Basis Weight
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Comment)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <th>
+            @Html.DisplayFor(modelItem => item.TreatingSpecID)
+        </th>
+        <th>Target</th>
+        <td>
+            @Html.DisplayFor(modelItem => item.FlowTarget)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RCTarget)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VolTarget)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NetRCTarget)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GurleyPorosityTarget)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WetOutTarget)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CaliperTarget)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BasisWeightTarget)
+        </td>
+        <td rowspan="3">
+            @Html.DisplayFor(modelItem => item.Comment)
+        </td>
+        <td rowspan="3">
+            @Html.ActionLink("Edit", "Edit", new { id = item.TreatingSpecID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.TreatingSpecID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.TreatingSpecID })
+        </td>
+    </tr>
+        <tr>
+            <th></th>
+            <th>Min</th>
+            <td>
+                @Html.DisplayFor(modelItem => item.FlowMin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RCMin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VolMin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NetRCMin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GurleyPorosityMin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WetOutMin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CaliperMin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BasisWeightMin)
+            </td>
+        </tr>
+        <tr>
+            <th></th>
+            <th>Max</th>
+            <td>
+                @Html.DisplayFor(modelItem => item.FlowMax)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RCMax)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VolMax)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NetRCMax)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GurleyPorosityMax)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WetOutMax)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CaliperMax)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BasisWeightMax)
+            </td>
+        </tr>
+    }
+
+</table>

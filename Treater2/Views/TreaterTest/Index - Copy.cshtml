@@ -1,0 +1,311 @@
+﻿@model PagedList.IPagedList<Treater2.Models.TreaterTest>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@{
+    ViewBag.Title = "Index";
+}
+<img src="/Content/Images/FRLogo.jpg" />
+<h2>Test Log - @ViewBag.CurrentTreater</h2>
+
+@Html.Hidden("CurrentTreaterID", (int?)ViewBag.CurrentTreaterID)
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@using (Html.BeginForm(@*"Index", "TreaterTest", FormMethod.Get*@))
+{
+<p>
+    Find by name: @Html.TextBox("searchString", ViewBag.CurrentSearchFilter as string)
+    Find by date range: @Html.TextBox("dateRange", ViewBag.CurrentDateFilter as string)
+    <input type='submit' value='Search' formaction='@Url.Action("Index","TreaterTest")' />
+    <input type='submit' value='Export' formaction='@Url.Action("ExportToExcel","TreaterTest")' />
+</p>
+}
+<table class="table">
+    <tr class="toprow">
+        <th style="min-width: 110px;">Action Links</th>
+        <th>
+            Job
+        </th>
+        <th>
+            Ash Part
+        </th>
+        <th>
+            Resin Mix
+        </th>
+        <th>
+            Treating Spec
+        </th>
+        <th>
+            Paper
+        </th>
+        <th class="ResinContentFiberesin">
+            FR Resin Content
+        </th>
+        <th class="NetRC">
+            NetRC
+        </th>
+        <th>
+            Vol
+        </th>
+        <th class="Flow">
+            Flow
+        </th>
+        <th class="GurleyPorosity">
+            Gurley
+        </th>
+        <th class="WetOut">
+            Wet Out
+        </th>
+        <th class="Caliper">
+            Caliper
+        </th>
+        <th class="BasisWeight">
+            Basis Weight
+        </th>
+        <th>
+            TreaterName
+        </th>
+        <th style="min-width: 100px;">
+            Date Time
+        </th>
+        <th>
+            Size
+        </th>
+        <th>
+            Operator A
+        </th>
+        <th>
+            Operator B
+        </th>
+        <th>
+            Roll/Skid Num
+        </th>
+        <th>
+            Qty
+        </th>
+        <th>
+            UOM
+        </th>
+        <th>
+            Dry Roll Num
+        </th>
+        <th>
+            Test Num
+        </th>
+    </tr>
+    <tr class="bottomrow">
+        <th></th>
+        <th>
+            Zone 1 Temp
+        </th>
+        <th>
+            Zone 2 Temp
+        </th>
+        <th>
+            Zone 3 Temp
+        </th>
+        <th>
+            Speed
+        </th>
+        <th>
+            Pan Config
+        </th>
+        <th class="PanLevel">
+            Pan Level
+        </th>
+        <th>
+            Bar Config
+        </th>
+        <th class="BarAngle">
+            Bar Angle
+        </th>
+        <th>
+            Resin Temp
+        </th>
+        <th class="ResinSolids">
+            Resin Solids
+        </th>
+        <th class="ResinSolids">
+            Res Sol Pct
+        </th>
+        <th>
+            Raw Paper Weight
+        </th>
+        <th>
+            Dry Paper Weight
+        </th>
+        <th>
+            Raw Paper MC
+        </th>
+        <th>
+            Treated Paper Weight
+        </th>
+        <th>
+            Volatiles Treated Weight
+        </th>
+        <th>
+            Volatiles Oven Dry Weight
+        </th>
+        <th class="TreatedPressed">
+            Treated Pressed Weight
+        </th>
+        <th>
+            Notes
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr class="toprow">
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID })<br />
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID }) |
+                @Html.ActionLink("Label", "LabelParameters", new { id = item.ID }, new { target = "_blank" })
+
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JobNum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AshPart.AshPartID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AshPart.ResinMix)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AshPart.TreatingSpec.TreatingSpecID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AshPart.Paper)
+            </td>
+            <td class="ResinContentFiberesin">
+                @Html.DisplayFor(modelItem => item.ResinContentFiberesin)
+            </td>
+            <td class="NetRC">
+                @Html.DisplayFor(modelItem => item.NetRC)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Vol)
+            </td>
+            <td class="Flow">
+                @Html.DisplayFor(modelItem => item.Flow)
+            </td>
+            <td class="GurleyPorosity">
+                @Html.DisplayFor(modelItem => item.GurleyPorosity)
+            </td>
+            <td class="WetOut">
+                @Html.DisplayFor(modelItem => item.WetOut)
+            </td>
+            <td class="Caliper">
+                @Html.DisplayFor(modelItem => item.Caliper)
+            </td>
+            <td class="BasisWeight">
+                @Html.DisplayFor(modelItem => item.BasisWeight)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TreatingLine.TreaterName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TreatmentDateTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AshPart.Size)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OperatorA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OperatorB)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RollSkidNum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Qty)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UOM)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DryRollNum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TestNum)
+            </td>
+        </tr>
+        <tr class="bottomrow">
+            <td></td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Zone1Temp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Zone2Temp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Zone3Temp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Speed)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PanConfig)
+            </td>
+            <td class="PanLevel">
+                @Html.DisplayFor(modelItem => item.PanLevel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BarConfigID)
+            </td>
+            <td class="BarAngle">
+                @Html.DisplayFor(modelItem => item.BarAngle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ResinTemp)
+            </td>
+            <td class="ResinSolids">
+                @Html.DisplayFor(modelItem => item.ResinSolids)
+            </td>
+            <td class="ResinSolids">
+                @Html.DisplayFor(modelItem => item.ResinSolidsPct)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RawPaperWeight)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DryPaperWeight)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RawPaperMC)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TreatedPaperWeight)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VolatilesTreatedWeight)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VolatilesOvenDryWeight)
+            </td>
+            <td class="TreatedPressed">
+                @Html.DisplayFor(modelItem => item.TreatedPressedWeight)
+            </td>
+            <td colspan="6">
+                @Html.DisplayFor(modelItem => item.Notes)
+            </td>
+        </tr>
+    }
+
+</table>
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, currentSearchFilter = ViewBag.currentSearchFilter, currentDateFilter = ViewBag.currentDateFilter }))
+
+@section Scripts
+{
+    <script src="@Url.Content("~/Scripts/TreatingLineShowHide.js")"></script>
+}

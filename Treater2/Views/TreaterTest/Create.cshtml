@@ -1,0 +1,520 @@
+﻿@model Treater2.Models.TreaterTest
+@{
+    ViewBag.Title = "Create";
+
+}
+
+@{ 
+    string panConfigVal = "-1";
+    if (TempData != null && TempData["PanConfInt"] != null)
+    {
+        panConfigVal = TempData["PanConfInt"].ToString();
+    }
+}
+
+
+<h2>Create</h2>
+@*@{
+        if (Model != null)
+        {
+            var x = Model.Notes;
+        }
+
+    }*@
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>TreaterTest - @ViewBag.CurrentTreater</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.TreatingLineID, new { @id = "CurrentTreaterID" })
+    @Html.Hidden("panConfigVal", panConfigVal)
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form-group">
+                <h3>Operating Information</h3>
+                <div class="col-md-12">
+                    @Html.LabelFor(model => model.TreatmentDateTime, htmlAttributes: new { @class = "control-label" })
+                    <br />
+                    @Html.EditorFor(model => model.TreatmentDateTime, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.TreatmentDateTime, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-6">
+                    @Html.LabelFor(model => model.OperatorA, htmlAttributes: new { @class = "control-label" })
+                    <br />
+                    @Html.EditorFor(model => model.OperatorA, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.OperatorA, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-6">
+                    @Html.LabelFor(model => model.OperatorB, htmlAttributes: new { @class = "control-label" })
+                    <br />
+                    @Html.EditorFor(model => model.OperatorB, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.OperatorB, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+            <div class="form-group">
+                <h3>Job Information</h3>
+                <div class="col-md-4">
+                    @Html.LabelFor(model => model.JobNum, htmlAttributes: new { @class = "control-label" })
+                    <br />
+                    @Html.EditorFor(model => model.JobNum, new
+        {
+            htmlAttributes = new
+            {
+                @class = "form-control",
+                @style = "text-transform:uppercase"
+            }
+        })
+                    @Html.ValidationMessageFor(model => model.JobNum, "", new { @class = "text-danger" })
+                </div>
+
+                @*Creates a URL to get the AshPart treating recipe when the AshPart is changed from the TreaterTest Controller.*@
+                <div id="loader" data-request-url="@Url.Action("GetAshPart","TreaterTest")"></div>
+
+                <div class="col-md-8">
+                    @Html.LabelFor(model => model.AshPartID, "AshPartID", htmlAttributes: new { @class = "control-label" })
+                    <br />
+                    @Html.DropDownList("AshPartID", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.AshPartID, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-6">
+                    @Html.LabelFor(model => model.AshPart.ResinMix, htmlAttributes: new { @class = "control-label" })
+                    <br />
+                    @Html.EditorFor(model => model.AshPart.ResinMix, new { htmlAttributes = new { disabled = "disabled", @class = "form-control" } })
+                </div>
+                <div class="col-md-6">
+                    @Html.LabelFor(model => model.AshPart.TreatingSpecID, htmlAttributes: new { @class = "control-label" })
+                    <br />
+                    @Html.EditorFor(model => model.AshPart.TreatingSpecID, new { htmlAttributes = new { disabled = "disabled", @class = "form-control" } })
+                </div>
+                <div class="col-md-6">
+                    @Html.LabelFor(model => model.AshPart.Paper, htmlAttributes: new { @class = "control-label" })
+                    <br />
+                    @Html.EditorFor(model => model.AshPart.Paper, new { htmlAttributes = new { disabled = "disabled", @class = "form-control" } })
+                </div>
+
+                <div class="col-md-6">
+                    @Html.LabelFor(model => model.AshPart.Size, htmlAttributes: new { @class = "control-label" })
+                    <br />
+                    @Html.EditorFor(model => model.AshPart.Size, new { htmlAttributes = new { disabled = "disabled", @class = "form-control" } })
+                </div>
+                <div class="col-md-6">
+                    @Html.LabelFor(model => model.DryRollNum, htmlAttributes: new { @class = "control-label" })
+                    <br />
+                    @Html.EditorFor(model => model.DryRollNum, new
+        {
+            htmlAttributes = new
+            {
+                @class = "form-control",
+                @style = "text-transform:uppercase"
+            }
+        })
+                    @Html.ValidationMessageFor(model => model.DryRollNum, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-6">
+                    @Html.LabelFor(model => model.RawPaperWeight, htmlAttributes: new { @class = "control-label" })
+                    <br />
+                    @Html.EditorFor(model => model.RawPaperWeight, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.RawPaperWeight, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-6">
+                    @Html.LabelFor(model => model.DryPaperWeight, htmlAttributes: new { @class = "control-label" })
+                    <br />
+                    @Html.EditorFor(model => model.DryPaperWeight, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.DryPaperWeight, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-6">
+                    @Html.LabelFor(model => model.RawPaperMC, htmlAttributes: new { @class = "control-label" })
+                    <br />
+                    @Html.EditorFor(model => model.RawPaperMC, new { htmlAttributes = new { disabled = "disabled", @class = "form-control" } })
+                </div>
+                <div class="col-md-6 Paper_COA">
+                    @Html.LabelFor(model => model.Paper_COA, htmlAttributes: new { @class = "control-label" })
+                    <br />
+                    @Html.EditorFor(model => model.Paper_COA, new
+        {
+            htmlAttributes = new
+            {
+                @class = "form-control",
+                @style = "text-transform:uppercase"
+            }
+        })
+                    @Html.ValidationMessageFor(model => model.Paper_COA, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-6">
+                    @Html.LabelFor(model => model.Resin_COA, htmlAttributes: new { @class = "control-label"})
+                    <br />
+                    @Html.EditorFor(model => model.Resin_COA, new
+               {
+                   htmlAttributes = new
+                   {
+                       @class = "form-control",
+                       @style = "text-transform:uppercase"
+                   },
+                   required = "required"
+               })
+                    @Html.ValidationMessageFor(model => model.Resin_COA, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <h3>Test Parameters</h3>
+                <div class="row">
+                    <div class="col-md-4">
+                        @Html.LabelFor(model => model.TestNum, htmlAttributes: new { @class = "control-label" })
+                        <br />
+                        @Html.EditorFor(model => model.TestNum, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.TestNum, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-4">
+                        @Html.LabelFor(model => model.RollSkidNum, htmlAttributes: new { @class = "control-label" }) Last Roll: @ViewBag.LastRoll
+                        <br />
+                        @Html.EditorFor(model => model.RollSkidNum, new { htmlAttributes = new { @class = "form-control",
+                       @style = "text-transform:uppercase" } })
+                        @Html.ValidationMessageFor(model => model.RollSkidNum, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        @Html.LabelFor(model => model.Speed, htmlAttributes: new { @class = "control-label" })
+                        <br />
+                        @Html.EditorFor(model => model.Speed, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Speed, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-4">
+                        @Html.LabelFor(model => model.BarConfigID, "BarConfigID", htmlAttributes: new { @class = "control-label" })
+                        <br />
+                        @Html.DropDownList("BarConfigID", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.BarConfigID, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-4 BarAngle">
+                        @Html.LabelFor(model => model.BarAngle, htmlAttributes: new { @class = "control-label" })
+                        <br />
+                        @Html.EditorFor(model => model.BarAngle, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.BarAngle, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        @Html.LabelFor(model => model.Zone1Temp, htmlAttributes: new { @class = "control-label" })
+                        <br />
+                        @Html.EditorFor(model => model.Zone1Temp, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Zone1Temp, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="col-md-4">
+                        @Html.LabelFor(model => model.Zone2Temp, htmlAttributes: new { @class = "control-label" })
+                        <br />
+                        @Html.EditorFor(model => model.Zone2Temp, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Zone2Temp, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="col-md-4">
+                        @Html.LabelFor(model => model.Zone3Temp, htmlAttributes: new { @class = "control-label" })
+                        <br />
+                        @Html.EditorFor(model => model.Zone3Temp, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Zone3Temp, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-4 ResinSolids">
+                        @Html.LabelFor(model => model.ResinSolids, htmlAttributes: new { @class = "control-label" })
+                        <br />
+                        @Html.EditorFor(model => model.ResinSolids, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ResinSolids, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-4 ResinSolidsPct">
+                        @Html.LabelFor(model => model.ResinSolidsPct, htmlAttributes: new { @class = "control-label" })
+                        <br />
+                        @Html.EditorFor(model => model.ResinSolidsPct, new { htmlAttributes = new { disabled = "disabled", @class = "form-control" } })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        @Html.LabelFor(model => model.PanConfig, htmlAttributes: new { @class = "control-label" })
+                        <br />
+                        @Html.EnumDropDownListFor(model => model.PanConfig, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.PanConfig, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="col-md-4 PanLevel">
+                        @Html.LabelFor(model => model.PanLevel, htmlAttributes: new { @class = "control-label" })
+                        <br />
+                        @Html.EditorFor(model => model.PanLevel, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.PanLevel, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-4">
+                        @Html.LabelFor(model => model.ResinTemp, htmlAttributes: new { @class = "control-label" })
+                        <br />
+                        @Html.EditorFor(model => model.ResinTemp, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ResinTemp, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <h3>Test values</h3>
+                <div class="row">
+                    <div class="col-md-3">
+                        @Html.LabelFor(model => model.TreatedPaperWeight, htmlAttributes: new { @class = "control-label" })
+                        <br />
+                        @Html.EditorFor(model => model.TreatedPaperWeight, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.TreatedPaperWeight, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-3 TreatedPressed">
+                        @Html.LabelFor(model => model.TreatedPressedWeight, htmlAttributes: new { @class = "control-label" })
+                        <br />
+                        @Html.EditorFor(model => model.TreatedPressedWeight, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.TreatedPressedWeight, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-3">
+                        @Html.LabelFor(model => model.VolatilesTreatedWeight, htmlAttributes: new { @class = "control-label" })
+                        <br />
+                        @Html.EditorFor(model => model.VolatilesTreatedWeight, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.VolatilesTreatedWeight, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="col-md-3">
+                        @Html.LabelFor(model => model.VolatilesOvenDryWeight, htmlAttributes: new { @class = "control-label" })
+                        <br />
+                        @Html.EditorFor(model => model.VolatilesOvenDryWeight, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.VolatilesOvenDryWeight, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="row ResinContentFiberesin">
+                    <div class="col-md-3">
+                        @Html.LabelFor(model => model.ResinContentFiberesin, htmlAttributes: new { @class = "control-label" })
+                        <br />
+                        @Html.EditorFor(model => model.ResinContentFiberesin, new { htmlAttributes = new { disabled = "disabled", @class = "form-control" } })
+                    </div>
+                    <div class="col-md-3">
+                        @Html.LabelFor(model => model.AshPart.TreatingSpec.RCMin, htmlAttributes: new { @class = "control-label" })
+                        <br />
+                        @Html.EditorFor(model => model.AshPart.TreatingSpec.RCMin, new { htmlAttributes = new { disabled = "disabled", @class = "form-control" } })
+                    </div>
+                    <div class="col-md-3">
+                        @Html.LabelFor(model => model.AshPart.TreatingSpec.RCTarget, htmlAttributes: new { @class = "control-label" })
+                        <br />
+                        @Html.EditorFor(model => model.AshPart.TreatingSpec.RCTarget, new { htmlAttributes = new { disabled = "disabled", @class = "form-control" } })
+                    </div>
+                    <div class="col-md-3">
+                        @Html.LabelFor(model => model.AshPart.TreatingSpec.RCMax, htmlAttributes: new { @class = "control-label" })
+                        <br />
+                        @Html.EditorFor(model => model.AshPart.TreatingSpec.RCMax, new { htmlAttributes = new { disabled = "disabled", @class = "form-control" } })
+                    </div>
+                </div>
+                <div class="row NetRC">
+                    <div class="col-md-3">
+                        @Html.LabelFor(model => model.NetRC, htmlAttributes: new { @class = "control-label" })
+                        <br />
+                        @Html.EditorFor(model => model.NetRC, new { htmlAttributes = new { disabled = "disabled", @class = "form-control" } })
+                    </div>
+                    <div class="col-md-3">
+                        @Html.LabelFor(model => model.AshPart.TreatingSpec.NetRCMin, htmlAttributes: new { @class = "control-label" })
+                        <br />
+                        @Html.EditorFor(model => model.AshPart.TreatingSpec.NetRCMin, new { htmlAttributes = new { disabled = "disabled", @class = "form-control" } })
+                    </div>
+                    <div class="col-md-3">
+                        @Html.LabelFor(model => model.AshPart.TreatingSpec.NetRCTarget, htmlAttributes: new { @class = "control-label" })
+                        <br />
+                        @Html.EditorFor(model => model.AshPart.TreatingSpec.NetRCTarget, new { htmlAttributes = new { disabled = "disabled", @class = "form-control" } })
+                    </div>
+                    <div class="col-md-3">
+                        @Html.LabelFor(model => model.AshPart.TreatingSpec.NetRCMax, htmlAttributes: new { @class = "control-label" })
+                        <br />
+                        @Html.EditorFor(model => model.AshPart.TreatingSpec.NetRCMax, new { htmlAttributes = new { disabled = "disabled", @class = "form-control" } })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        @Html.LabelFor(model => model.Vol, htmlAttributes: new { @class = "control-label" })
+                        <br />
+                        @Html.EditorFor(model => model.Vol, new { htmlAttributes = new { disabled = "disabled", @class = "form-control" } })
+                    </div>
+                    <div class="col-md-3">
+                        @Html.LabelFor(model => model.AshPart.TreatingSpec.VolMin, htmlAttributes: new { @class = "control-label" })
+                        <br />
+                        @Html.EditorFor(model => model.AshPart.TreatingSpec.VolMin, new { htmlAttributes = new { disabled = "disabled", @class = "form-control" } })
+                    </div>
+                    <div class="col-md-3">
+                        @Html.LabelFor(model => model.AshPart.TreatingSpec.VolTarget, htmlAttributes: new { @class = "control-label" })
+                        <br />
+                        @Html.EditorFor(model => model.AshPart.TreatingSpec.VolTarget, new { htmlAttributes = new { disabled = "disabled", @class = "form-control" } })
+                    </div>
+                    <div class="col-md-3">
+                        @Html.LabelFor(model => model.AshPart.TreatingSpec.VolMax, htmlAttributes: new { @class = "control-label" })
+                        <br />
+                        @Html.EditorFor(model => model.AshPart.TreatingSpec.VolMax, new { htmlAttributes = new { disabled = "disabled", @class = "form-control" } })
+                    </div>
+                </div>
+                <div class="row Flow">
+                    <div class="col-md-3">
+                        @Html.LabelFor(model => model.Flow, htmlAttributes: new { @class = "control-label" })
+                        <br />
+                        @Html.EditorFor(model => model.Flow, new { htmlAttributes = new { disabled = "disabled", @class = "form-control" } })
+                    </div>
+                    <div class="col-md-3">
+                        @Html.LabelFor(model => model.AshPart.TreatingSpec.FlowMin, htmlAttributes: new { @class = "control-label" })
+                        <br />
+                        @Html.EditorFor(model => model.AshPart.TreatingSpec.FlowMin, new { htmlAttributes = new { disabled = "disabled", @class = "form-control" } })
+                    </div>
+                    <div class="col-md-3">
+                        @Html.LabelFor(model => model.AshPart.TreatingSpec.FlowTarget, htmlAttributes: new { @class = "control-label" })
+                        <br />
+                        @Html.EditorFor(model => model.AshPart.TreatingSpec.FlowTarget, new { htmlAttributes = new { disabled = "disabled", @class = "form-control" } })
+                    </div>
+                    <div class="col-md-3">
+                        @Html.LabelFor(model => model.AshPart.TreatingSpec.FlowMax, htmlAttributes: new { @class = "control-label" })
+                        <br />
+                        @Html.EditorFor(model => model.AshPart.TreatingSpec.FlowMax, new { htmlAttributes = new { disabled = "disabled", @class = "form-control" } })
+                    </div>
+                </div>
+                <div class="row GurleyPorosity">
+                    <div class="col-md-3">
+                        @Html.LabelFor(model => model.GurleyPorosity, htmlAttributes: new { @class = "control-label" })
+                        <br />
+                        @Html.EditorFor(model => model.GurleyPorosity, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.GurleyPorosity, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-3">
+                        @Html.LabelFor(model => model.AshPart.TreatingSpec.GurleyPorosityMin, htmlAttributes: new { @class = "control-label" })
+                        <br />
+                        @Html.EditorFor(model => model.AshPart.TreatingSpec.GurleyPorosityMin, new { htmlAttributes = new { disabled = "disabled", @class = "form-control" } })
+                    </div>
+                    <div class="col-md-3">
+                        @Html.LabelFor(model => model.AshPart.TreatingSpec.GurleyPorosityTarget, htmlAttributes: new { @class = "control-label" })
+                        <br />
+                        @Html.EditorFor(model => model.AshPart.TreatingSpec.GurleyPorosityTarget, new { htmlAttributes = new { disabled = "disabled", @class = "form-control" } })
+                    </div>
+                    <div class="col-md-3">
+                        @Html.LabelFor(model => model.AshPart.TreatingSpec.GurleyPorosityMax, htmlAttributes: new { @class = "control-label" })
+                        <br />
+                        @Html.EditorFor(model => model.AshPart.TreatingSpec.GurleyPorosityMax, new { htmlAttributes = new { disabled = "disabled", @class = "form-control" } })
+                    </div>
+                </div>
+                <div class="row WetOut">
+                    <div class="col-md-3">
+                        @Html.LabelFor(model => model.WetOut, htmlAttributes: new { @class = "control-label" })
+                        <br />
+                        @Html.EditorFor(model => model.WetOut, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.WetOut, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-3">
+                        @Html.LabelFor(model => model.AshPart.TreatingSpec.WetOutMin, htmlAttributes: new { @class = "control-label" })
+                        <br />
+                        @Html.EditorFor(model => model.AshPart.TreatingSpec.WetOutMin, new { htmlAttributes = new { disabled = "disabled", @class = "form-control" } })
+                    </div>
+                    <div class="col-md-3">
+                        @Html.LabelFor(model => model.AshPart.TreatingSpec.WetOutTarget, htmlAttributes: new { @class = "control-label" })
+                        <br />
+                        @Html.EditorFor(model => model.AshPart.TreatingSpec.WetOutTarget, new { htmlAttributes = new { disabled = "disabled", @class = "form-control" } })
+                    </div>
+                    <div class="col-md-3">
+                        @Html.LabelFor(model => model.AshPart.TreatingSpec.WetOutMax, htmlAttributes: new { @class = "control-label" })
+                        <br />
+                        @Html.EditorFor(model => model.AshPart.TreatingSpec.WetOutMax, new { htmlAttributes = new { disabled = "disabled", @class = "form-control" } })
+                    </div>
+                </div>
+                <div class="row Caliper">
+                    <div class="col-md-3">
+                        @Html.LabelFor(model => model.Caliper, htmlAttributes: new { @class = "control-label" })
+                        <br />
+                        @Html.EditorFor(model => model.Caliper, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Caliper, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-3">
+                        @Html.LabelFor(model => model.AshPart.TreatingSpec.CaliperMin, htmlAttributes: new { @class = "control-label" })
+                        <br />
+                        @Html.EditorFor(model => model.AshPart.TreatingSpec.CaliperMin, new { htmlAttributes = new { disabled = "disabled", @class = "form-control" } })
+                    </div>
+                    <div class="col-md-3">
+                        @Html.LabelFor(model => model.AshPart.TreatingSpec.CaliperTarget, htmlAttributes: new { @class = "control-label" })
+                        <br />
+                        @Html.EditorFor(model => model.AshPart.TreatingSpec.CaliperTarget, new { htmlAttributes = new { disabled = "disabled", @class = "form-control" } })
+                    </div>
+                    <div class="col-md-3">
+                        @Html.LabelFor(model => model.AshPart.TreatingSpec.CaliperMax, htmlAttributes: new { @class = "control-label" })
+                        <br />
+                        @Html.EditorFor(model => model.AshPart.TreatingSpec.CaliperMax, new { htmlAttributes = new { disabled = "disabled", @class = "form-control" } })
+                    </div>
+                </div>
+                <div class="row BasisWeight">
+                    <div class="col-md-3">
+                        @Html.LabelFor(model => model.BasisWeight, htmlAttributes: new { @class = "control-label" })
+                        <br />
+                        @Html.EditorFor(model => model.BasisWeight, new { htmlAttributes = new { disabled = "disabled", @class = "form-control" } })
+                    </div>
+                    <div class="col-md-3">
+                        @Html.LabelFor(model => model.AshPart.TreatingSpec.BasisWeightMin, htmlAttributes: new { @class = "control-label" })
+                        <br />
+                        @Html.EditorFor(model => model.AshPart.TreatingSpec.BasisWeightMin, new { htmlAttributes = new { disabled = "disabled", @class = "form-control" } })
+                    </div>
+                    <div class="col-md-3">
+                        @Html.LabelFor(model => model.AshPart.TreatingSpec.BasisWeightTarget, htmlAttributes: new { @class = "control-label" })
+                        <br />
+                        @Html.EditorFor(model => model.AshPart.TreatingSpec.BasisWeightTarget, new { htmlAttributes = new { disabled = "disabled", @class = "form-control" } })
+                    </div>
+                    <div class="col-md-3">
+                        @Html.LabelFor(model => model.AshPart.TreatingSpec.BasisWeightMax, htmlAttributes: new { @class = "control-label" })
+                        <br />
+                        @Html.EditorFor(model => model.AshPart.TreatingSpec.BasisWeightMax, new { htmlAttributes = new { disabled = "disabled", @class = "form-control" } })
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <h3>End of Run</h3>
+                <div class="row">
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model.Qty, htmlAttributes: new { @class = "control-label" })
+                        <br />
+                        @Html.EditorFor(model => model.Qty, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Qty, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model.UOM, htmlAttributes: new { @class = "control-label" })
+                        <br />
+                        @Html.EnumDropDownListFor(model => model.UOM, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.UOM, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="row">
+
+                    <div class="col-md-12">
+                        @Html.LabelFor(model => model.Notes, htmlAttributes: new { @class = "control-label" })
+                        <br />
+                        @Html.EditorFor(model => model.Notes, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Notes, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div>
+                    <input type="submit" name="actiontype" value="Save and Close" class="btn btn-default" />
+                    <input type="submit" name="actiontype" value="Save and Next Test" class="btn btn-default" />
+                    <input type="submit" name="actiontype" value="Save and Next Skid" class="btn btn-default" />
+                    <input type="submit" name="actiontype" value="Save and Next Job" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @*@Html.ActionLink("Back to List", "Index")*@
+    @Html.ActionLink("Back to List", "Index", new { ctid = ViewBag.CurrentTreaterID, page = ViewBag.Page, searchstr = ViewBag.SearchStr, daterange = ViewBag.DateRange, labelid = 0 })
+</div>
+@section Scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="@Url.Content("~/Scripts/TreaterTestCreateEdit.js")"></script>
+    <script src="@Url.Content("~/Scripts/TreatingLineShowHide.js")"></script>
+}
+

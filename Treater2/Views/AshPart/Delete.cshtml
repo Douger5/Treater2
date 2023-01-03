@@ -1,0 +1,56 @@
+﻿@model Treater2.Models.AshPart
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>AshPart - @Html.DisplayFor(model => model.AshPartID)</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ResinMix)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ResinMix)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TreatingSpecID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TreatingSpecID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Paper)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Paper)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Size)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Size)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
