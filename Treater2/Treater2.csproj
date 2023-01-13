@@ -169,12 +169,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\Treater\Treater\DAL\TreatingContext.cs">
-      <Link>DAL\TreatingContext.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Treater\Treater\DAL\TreatingInitializer.cs">
-      <Link>DAL\TreatingInitializer.cs</Link>
-    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -184,6 +178,8 @@
     <Compile Include="Controllers\ReleaseSheetController.cs" />
     <Compile Include="Controllers\TreaterTestController.cs" />
     <Compile Include="Controllers\TreatingSpecController.cs" />
+    <Compile Include="DAL\TreatingContext.cs" />
+    <Compile Include="DAL\TreatingInitializer.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
